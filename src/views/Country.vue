@@ -4,7 +4,7 @@
       Back
     </v-btn>
     <h1 class="mb-4 d-flex align-center">
-      {{ data.Country }} <img class="ml-4" :src="`https://www.countryflags.io/${data.CountryCode}/shiny/48.png`">
+      {{ data.Country }} <Flag class="ml-4" :code="data.CountryCode" :size="48" />
     </h1>
     <InfoCountry :country="data"/>
   </v-container>
@@ -12,9 +12,10 @@
 </template>
 <script>
   import InfoCountry from "../components/InfoCountry";
+  import Flag from "../components/Flag";
   export default {
     name: "Country",
-    components: {InfoCountry},
+    components: {Flag, InfoCountry},
     computed: {
       data() {
         return this.$store.getters.COUNTRY(this.$route.params.id);

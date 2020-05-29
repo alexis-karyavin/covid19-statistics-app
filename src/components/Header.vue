@@ -21,7 +21,7 @@
       <v-list dense>
         <v-list-item v-for="country in countries" :key="country.id" :to="'/country/' + country.id">
           <v-list-item-action>
-            <img :src="`https://www.countryflags.io/${country.id}/shiny/32.png`">
+            <Flag :code="country.id" :size="32" />
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>{{ country.name }}</v-list-item-title>
@@ -35,8 +35,10 @@
 </template>
 
 <script>
+  import Flag from "./Flag";
   export default {
     name: "Header",
+    components: {Flag},
     data: () => ({
       drawer: false,
       left: false,
