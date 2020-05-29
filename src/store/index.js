@@ -11,7 +11,8 @@ export default new Vuex.Store({
   },
   mutations: {
     SAVE_DATA(state, data) {
-      console.log(data)
+      // data.Countries = data.Countries.sort((a,b) => b.TotalConfirmed - a.TotalConfirmed);
+      console.log(data);
       state.global = data.Global;
       state.countries = data.Countries;
     }
@@ -22,6 +23,14 @@ export default new Vuex.Store({
     },
     COUNTRY: (state) => (id) => {
       return state.countries.find(item => item.CountryCode === id);
+    },
+    LIST_COUNTRIES( state ) {
+      return state.countries.map(item => {
+        return {
+          name: item.Country,
+          id: item.CountryCode
+        }
+      });
     }
   },
   actions: {

@@ -3,37 +3,18 @@
     <v-btn to="/">
       Back
     </v-btn>
-    <h1 class="mb-4">{{ data.Country }}</h1>
-    <v-card
-        class="mx-auto"
-        max-width="400"
-    >
-      <v-card-text class="text--primary">
-        <v-row>
-          <v-col cols="12" sm="6">
-            Confirmed: {{data.TotalConfirmed}} <span>+{{ data.NewConfirmed }}</span>
-          </v-col>
-          <v-col cols="12" sm="6">
-              Recovered: {{data.TotalRecovered}} <span>+{{ data.NewRecovered }}</span>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" sm="6">
-            Deaths: {{data.TotalDeaths}} <span>+{{ data.NewDeaths }}</span>
-          </v-col>
-          <v-col cols="12" sm="6">
-            Active:{{data.TotalConfirmed - data.TotalRecovered - data.TotalDeaths}}
-          </v-col>
-        </v-row>
-      </v-card-text>
-
-    </v-card>
+    <h1 class="mb-4 d-flex align-center">
+      {{ data.Country }} <img class="ml-4" :src="`https://www.countryflags.io/${data.CountryCode}/shiny/48.png`">
+    </h1>
+    <InfoCountry :country="data"/>
   </v-container>
 
 </template>
 <script>
+  import InfoCountry from "../components/InfoCountry";
   export default {
     name: "Country",
+    components: {InfoCountry},
     computed: {
       data() {
         return this.$store.getters.COUNTRY(this.$route.params.id);

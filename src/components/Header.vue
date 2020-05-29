@@ -19,12 +19,12 @@
           label="Country"
       ></v-text-field>
       <v-list dense>
-        <v-list-item @click.stop="">
+        <v-list-item v-for="country in countries" :key="country.id" :to="'/country/' + country.id">
           <v-list-item-action>
-            <v-icon>mdi-exit-to-app</v-icon>
+            <img :src="`https://www.countryflags.io/${country.id}/shiny/32.png`">
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>item testr</v-list-item-title>
+            <v-list-item-title>{{ country.name }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -41,6 +41,11 @@
       drawer: false,
       left: false,
     }),
+    computed: {
+      countries() {
+        return this.$store.getters.LIST_COUNTRIES;
+      }
+    }
   }
 </script>
 
