@@ -33,7 +33,8 @@ export default new Vuex.Store({
       });
     },
     GET_TOP_COUNTRIES(state) {
-      return state.countries
+      let tmp = [...state.countries];
+      return tmp
                .sort((a,b) => b.TotalConfirmed - a.TotalConfirmed)
                .slice(0, 10);
     }
