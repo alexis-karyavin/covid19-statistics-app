@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-app-bar
-        app
-        clipped-right
-        color="blue-grey"
-        dark
+      app
+      clipped-right
+      color="blue-grey"
+      dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Covid-19 Statistics</v-toolbar-title>
@@ -16,7 +16,8 @@
         app
     >
       <v-text-field
-          label="Country"
+          label="Search"
+          class="ml-4 mr-4 mt-2"
       ></v-text-field>
       <v-list dense>
         <v-list-item v-for="country in countries" :key="country.id" :to="'/country/' + country.id">
