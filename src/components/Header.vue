@@ -17,6 +17,7 @@
     >
       <v-text-field
           label="Search"
+          v-model="filter"
           class="ml-4 mr-4 mt-2"
       ></v-text-field>
       <v-list dense>
@@ -42,11 +43,13 @@
     components: {Flag},
     data: () => ({
       drawer: false,
-      left: false,
+      filter: ''
     }),
     computed: {
       countries() {
-        return this.$store.getters.LIST_COUNTRIES;
+        return this.$store.getters.LIST_COUNTRIES.filter(item => {
+          return item.name.toUpperCase().indexOf(this.filter.toUpperCase()) > -1
+        });
       }
     }
   }
