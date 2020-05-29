@@ -31,6 +31,11 @@ export default new Vuex.Store({
           id: item.CountryCode
         }
       });
+    },
+    GET_TOP_COUNTRIES(state) {
+      return state.countries
+               .sort((a,b) => b.TotalConfirmed - a.TotalConfirmed)
+               .slice(0, 10);
     }
   },
   actions: {

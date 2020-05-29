@@ -3,9 +3,14 @@
     <h1 class="mb-4 d-flex align-center">
       All statistics
     </h1>
-    <InfoCountry :country="data"/>
-<!--    <router-link tag="v-btn" color="primary" > Afganistan </router-link>-->
-    <v-btn color="primary" to="/country/AF">Primary</v-btn>
+    <InfoCountry class="mb-6" :country="data"/>
+    <h1>Top 10 Confirmed</h1>
+    <v-data-table
+        :headers="headers"
+        :items="listCountries"
+        :items-per-page="5"
+        class="elevation-1"
+    ></v-data-table>
   </v-container>
 </template>
 
@@ -16,11 +21,53 @@ export default {
   name: 'Home',
   components: {
     InfoCountry
-
+  },
+  data() {
+    return {
+      headers: [
+        {
+          text: '#',
+          align: 'start',
+          sortable: false,
+          value: 'number',
+        },
+        {
+          text: 'Country',
+          sortable: false,
+          value: 'country',
+        },
+        {
+          text: 'Confirmed',
+          sortable: false,
+          value: 'confirmed',
+        },
+        {
+          text: 'Recovered',
+          sortable: false,
+          value: 'recovered',
+        },
+        {
+          text: 'Deaths',
+          sortable: false,
+          value: 'deaths',
+        },
+      ]
+    }
   },
   computed: {
     data() {
       return this.$store.getters.GLOBAL;
+    },
+    listCountries() {
+      return this.$store.getters.GET_TOP_COUNTRIES.map((item, i) => {
+        return {
+          number: i + 1,
+          country: item.Country,
+          confirmed: item.TotalConfirmed,
+          recovered: item.TotalRecovered,
+          deaths: item.TotalDeaths
+        }
+      });
     }
   }
 }
