@@ -1,5 +1,8 @@
 <template>
-  <v-container>
+  <v-container v-if="data">
+    <v-btn to="/">
+      Back
+    </v-btn>
     <h1 class="mb-4">{{ data.Country }}</h1>
     <v-card
         class="mx-auto"
@@ -8,26 +11,18 @@
       <v-card-text class="text--primary">
         <v-row>
           <v-col cols="12" sm="6">
-            <p>Confirmed</p>
-            <div>
-              {{data.TotalConfirmed}} <span>+{{ data.NewConfirmed }}</span>
-            </div>
+            Confirmed: {{data.TotalConfirmed}} <span>+{{ data.NewConfirmed }}</span>
           </v-col>
           <v-col cols="12" sm="6">
-            <p>Recovered</p>
-            {{data.TotalRecovered}} <span>+{{ data.NewRecovered }}</span>
+              Recovered: {{data.TotalRecovered}} <span>+{{ data.NewRecovered }}</span>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12" sm="6">
-            <p>Deaths</p>
-            <div>
-              {{data.TotalDeaths}} <span>+{{ data.NewDeaths }}</span>
-            </div>
+            Deaths: {{data.TotalDeaths}} <span>+{{ data.NewDeaths }}</span>
           </v-col>
           <v-col cols="12" sm="6">
-            <p>In Active Fase</p>
-            {{data.TotalConfirmed - data.TotalRecovered - data.TotalDeaths}}
+            Active:{{data.TotalConfirmed - data.TotalRecovered - data.TotalDeaths}}
           </v-col>
         </v-row>
       </v-card-text>
