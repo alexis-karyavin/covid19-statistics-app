@@ -41,7 +41,10 @@ export default new Vuex.Store({
   },
   actions: {
     async GET_DATA(state) {
-      const { data } = await axios.get('https://api.covid19api.com/summary');
+      let data = null;
+       await axios.get('https://api.covid19api.com/summary').then(res => {
+         data = res.data
+      })
       state.commit('SAVE_DATA', data);
     }
   },
