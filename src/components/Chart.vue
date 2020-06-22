@@ -8,9 +8,9 @@
   export default {
     name: "Chart",
     props: ['options', 'data'],
-    watch: {
-      data: function (newData, oldData) {
-        this.createChart();
+    data() {
+      return {
+        chart: null
       }
     },
     methods: {
@@ -45,7 +45,7 @@
             }
           }
         };
-        const chart = new Chart(this.$refs.canva, {
+        this.chart = new Chart(this.$refs.canva, {
           type: 'line',
           data: chartData,
           options: chartOptions
@@ -68,9 +68,6 @@
       },
       getDateArr(data) {
         let arr = [];
-        // for (let i = 0; i < data.length; i++) {
-        //   tmp.push(this.getDateFormatting(data[i].Date));
-        // }
         arr = data.map(item => this.getDateFormatting(item.Date))
         return arr;
       },

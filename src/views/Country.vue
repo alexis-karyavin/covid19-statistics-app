@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="data">
-    <v-btn to="/">
+    <v-btn to="/" @click="clickBtnBack">
       Back
     </v-btn>
     <h2 class="mb-4 d-flex align-center">
@@ -19,6 +19,16 @@
   export default {
     name: "Country",
     components: {Chart, Flag, InfoCountry},
+    watch: {
+      $route(from, to) {
+        this.$store.dispatch('GET_STATISTIC_BEFORE', this.data.Slug);
+      }
+    },
+    data() {
+      return {
+        chart: null
+      }
+    },
     computed: {
       data() {
         return this.$store.getters.COUNTRY(this.$route.params.id);
@@ -31,8 +41,12 @@
       this.$store.dispatch('GET_STATISTIC_BEFORE', this.data.Slug);
     },
     updated() {
-      // this.$store.dispatch('GET_STATISTIC_BEFORE', this.data.Slug);
       this.$refs.chart.update();
+    },
+    methods: {
+      clickBtnBack() {
+        this.$destroy();
+      }
     }
   }
 </script>

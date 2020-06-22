@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <h1 class="mb-4 d-flex align-center">
+    <h2 class="mb-4 d-flex align-center">
       All statistics
-    </h1>
+    </h2>
     <InfoCountry class="mb-6" :country="data"/>
-    <h1>Top 10 Confirmed</h1>
+    <h3>Top 10 Confirmed</h3>
     <v-data-table
         :headers="headers"
         :items="listCountries"

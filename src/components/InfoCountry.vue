@@ -6,18 +6,42 @@
     <v-card-text class="text--primary">
       <v-row>
         <v-col cols="12" sm="6">
-          Confirmed: {{country.TotalConfirmed}} <span>+{{ country.NewConfirmed }}</span>
+          <b>Confirmed:</b> <span class="title-number">{{country.TotalConfirmed}}</span>
+          <v-chip
+              class="ma-2"
+              color="primary"
+              text-color="white"
+              small
+          >
+            +{{ country.NewConfirmed }}
+          </v-chip>
         </v-col>
         <v-col cols="12" sm="6">
-          Recovered: {{country.TotalRecovered}} <span>+{{ country.NewRecovered }}</span>
+          <b>Recovered:</b> <span class="title-number"> {{country.TotalRecovered}} </span>
+          <v-chip
+              class="ma-2"
+              color="green"
+              text-color="white"
+              small
+          >
+            +{{ country.NewRecovered }}
+          </v-chip>
         </v-col>
       </v-row>
       <v-row>
         <v-col cols="12" sm="6">
-          Deaths: {{country.TotalDeaths}} <span>+{{ country.NewDeaths }}</span>
+          <b>Deaths:</b>  <span class="title-number">{{country.TotalDeaths}} </span>
+          <v-chip
+              class="ma-2"
+              color="red"
+              text-color="white"
+              small
+          >
+            +{{ country.NewDeaths }}
+          </v-chip>
         </v-col>
         <v-col cols="12" sm="6">
-          Active: {{country.TotalConfirmed - country.TotalRecovered - country.TotalDeaths}}
+          <b>Active:</b> <span class="title-number">{{country.TotalConfirmed - country.TotalRecovered - country.TotalDeaths}}</span>
         </v-col>
       </v-row>
     </v-card-text>
@@ -32,6 +56,8 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .title-number {
+    font-size: 1.4rem;
+  }
 </style>

@@ -7,7 +7,7 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Covid-19 Statistics</v-toolbar-title>
+      <v-toolbar-title>Covid-19 Statistics </v-toolbar-title><img src="../assets/virus.png" class="virus-img">
       <v-spacer></v-spacer>
     </v-app-bar>
 
@@ -55,6 +55,9 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .virus-img {
+    width: 30px;
+    margin-left: .5rem;
+  }
 </style>
