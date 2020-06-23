@@ -1,5 +1,5 @@
 <template>
-
+  <h2>Favotites Country</h2>
 </template>
 
 <script>

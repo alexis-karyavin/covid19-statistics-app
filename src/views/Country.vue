@@ -6,7 +6,7 @@
     <h2 class="mb-4 d-flex align-center">
       {{ data.Country }}
       <Flag class="ml-4" :code="data.CountryCode" :size="48" />
-      <BtnFavorites :favorites="false"/>
+<!--      <BtnFavorites :favorites="false"/>-->
     </h2>
     <InfoCountry :country="data"/>
     <h3>Confirmed vs Recovered chart</h3>
