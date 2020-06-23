@@ -15,7 +15,6 @@
 </template>
 
 <script>
-
 import InfoCountry from "../components/InfoCountry";
 export default {
   name: 'Home',

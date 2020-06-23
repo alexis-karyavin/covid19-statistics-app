@@ -21,6 +21,14 @@
           class="ml-4 mr-4 mt-2"
       ></v-text-field>
       <v-list dense>
+        <v-list-item :to="'/favorites/'">
+          <v-list-item-action>
+            <v-icon>mdi-star</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Favorites Country</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item v-for="country in countries" :key="country.id" :to="'/country/' + country.id">
           <v-list-item-action>
             <Flag :code="country.id" :size="32" />

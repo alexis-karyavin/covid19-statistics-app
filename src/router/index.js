@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     name: 'Country',
     component: () => import('../views/Country')
   },
+  {
+    path: '/favorites',
+    name: 'Favorites',
+    component: () => import('../views/FavoritesCountry')
+  }
 ]
 
 const router = new VueRouter({

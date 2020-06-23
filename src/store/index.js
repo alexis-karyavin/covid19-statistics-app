@@ -13,8 +13,6 @@ export default new Vuex.Store({
   },
   mutations: {
     SAVE_DATA(state, data) {
-      // data.Countries = data.Countries.sort((a,b) => b.TotalConfirmed - a.TotalConfirmed);
-      // console.log(data);
       state.global = data.Global;
       state.countries = data.Countries;
     },
