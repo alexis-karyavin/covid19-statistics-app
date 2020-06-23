@@ -4,7 +4,9 @@
       Back
     </v-btn>
     <h2 class="mb-4 d-flex align-center">
-      {{ data.Country }} <Flag class="ml-4" :code="data.CountryCode" :size="48" />
+      {{ data.Country }}
+      <Flag class="ml-4" :code="data.CountryCode" :size="48" />
+      <BtnFavorites :favorites="false"/>
     </h2>
     <InfoCountry :country="data"/>
     <h3>Confirmed vs Recovered chart</h3>
@@ -16,9 +18,10 @@
   import InfoCountry from "../components/InfoCountry";
   import Flag from "../components/Flag";
   import Chart from "../components/Chart";
+  import BtnFavorites from "../components/BtnFavorites";
   export default {
     name: "Country",
-    components: {Chart, Flag, InfoCountry},
+    components: {BtnFavorites, Chart, Flag, InfoCountry},
     watch: {
       $route(from, to) {
         this.$store.dispatch('GET_STATISTIC_BEFORE', this.data.Slug);
