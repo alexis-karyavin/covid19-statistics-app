@@ -1,9 +1,11 @@
 <template>
   <v-card
-      class="mx-auto"
+      class="mx-auto d-flex justify-center align-center"
       max-width="400"
+      min-height="273"
   >
-    <v-card-text class="text--primary">
+    <MoonLoader v-if="load" :color="'#607D8B'"></MoonLoader>
+    <v-card-text v-else class="text--primary">
       <v-row>
         <v-col cols="12" sm="6">
           <b>Confirmed:</b> <span class="title-number">{{country.TotalConfirmed}}</span>
@@ -50,9 +52,28 @@
 </template>
 
 <script>
+  import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
   export default {
     name: "InfoCountry",
-    props: ['country']
+    components: {
+      MoonLoader
+    },
+    data() {
+      return {
+        load: true
+      }
+    },
+    watch: {
+      country() {
+        this.load = false
+      }
+    },
+    mounted() {
+      if(Object.keys(this.country).length) {
+        this.load = false;
+      }
+    },
+    props: ['country'],
   }
 </script>
 
