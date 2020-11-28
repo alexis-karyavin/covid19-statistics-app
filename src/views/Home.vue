@@ -16,6 +16,8 @@
 
 <script>
 import InfoCountry from "../components/InfoCountry";
+import { formattingNumber } from '../libs/libs';
+
 export default {
   name: 'Home',
   components: {
@@ -62,9 +64,9 @@ export default {
         return {
           number: i + 1,
           country: item.Country,
-          confirmed: item.TotalConfirmed,
-          recovered: item.TotalRecovered,
-          deaths: item.TotalDeaths
+          confirmed: formattingNumber(item.TotalConfirmed),
+          recovered: formattingNumber(item.TotalRecovered),
+          deaths: formattingNumber(item.TotalDeaths)
         }
       });
     }
